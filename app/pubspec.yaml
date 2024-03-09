@@ -1,9 +1,10 @@
-name: app
+name: helping_nexus
 description: Helping Nexus App
 
 publish_to: 'none'
 
 version: 1.0.7+9
+
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
@@ -15,6 +16,7 @@ dependencies:
   # Critical
   http: ^0.13.4
   go_router: ^4.2.7
+  flutter_riverpod: ^2.4.10
   flutter_secure_storage: ^5.0.2
 
   # Can be replaced
@@ -28,6 +30,8 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^2.0.1
+  custom_lint: ^0.6.2
+  riverpod_lint: ^2.3.9
 
 flutter:
   uses-material-design: true
