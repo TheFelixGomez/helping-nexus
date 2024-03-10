@@ -7,8 +7,7 @@ from schemas.common import get_time_now, PyObjectId
 
 
 class MessageBase(BaseModel):
-    id: Optional[PyObjectId] = Field(alias="_id", default=None)
-    created_at: datetime = Field(default_factory=get_time_now)
+    wish_id: str
     from_user_id: str
     to_user_id: str
     message: str
@@ -19,4 +18,9 @@ class MessageIn(MessageBase):
 
 
 class MessageOut(MessageBase):
-    pass
+    id: Optional[PyObjectId] = Field(alias="_id", default=None)
+    created_at: datetime
+
+
+class MessageInDB(MessageBase):
+    created_at: datetime = Field(default_factory=get_time_now)

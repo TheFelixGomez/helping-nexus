@@ -1,7 +1,6 @@
 from datetime import datetime
 from typing import Optional
 
-from fastapi import UploadFile
 from pydantic import BaseModel, Field
 
 from schemas.common import Location, get_time_now, PyObjectId
@@ -12,20 +11,23 @@ class Volunteers(BaseModel):
 
 
 class WishBase(BaseModel):
-    id: Optional[PyObjectId] = Field(alias="_id", default=None)
-    created_at: datetime = Field(default_factory=get_time_now)
     user_id: str
     title: str
     location: Location
-    volunteers: list[Volunteers] = []
-    proposed_volunteers: list[Volunteers] = []
-    rejected_volunteers: list[Volunteers] = []
+    description: str
 
 
 class WishIn(WishBase):
-    password: str
-    profile_picture = UploadFile
+    pass
 
 
 class WishOut(WishBase):
-    pass
+    id: Optional[PyObjectId] = Field(alias="_id", default=None)
+    created_at: datetime
+
+
+class WishInDB(WishBase):
+    created_at: datetime = Field(default_factory=get_time_now)
+    volunteers: list[Volunteers] = []
+    proposed_volunteers: list[Volunteers] = []
+    rejected_volunteers: list[Volunteers] = []
