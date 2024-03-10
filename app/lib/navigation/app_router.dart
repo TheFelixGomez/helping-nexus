@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:helping_nexus/ui/welcome_screen.dart';
 
 import '../manager/app_state_manager.dart';
+import '../ui/auth/login/login_screen.dart';
 import '../ui/dashboard_screen.dart';
 import '../ui/splash_screen.dart';
 
@@ -28,6 +29,11 @@ final appStateManager = ref.watch(appStateProvider);
           builder: (context, state) => const WelcomeScreen()
       ),
       GoRoute(
+          name: 'login',
+          path: '/login',
+          builder: (context, state) => const LoginScreen()
+      ),
+      GoRoute(
         name: 'dashboard',
         path: '/dashboard',
         pageBuilder: (context, state) => NoTransitionPage<void>(
@@ -43,6 +49,7 @@ final appStateManager = ref.watch(appStateProvider);
       final inWelcome = state.fullPath == '/welcome';
       const welcomeLoc = '/welcome';
 
+      final inLogin = state.fullPath == '/login';
 
       const dashboardLoc = '/dashboard';
 
@@ -50,7 +57,8 @@ final appStateManager = ref.watch(appStateProvider);
 
       final noLoggedInRoutes = [
         inSplash,
-        inWelcome
+        inWelcome,
+        inLogin
       ];
 
       // redirect to the welcome page if the user is not logged in or to the
@@ -60,6 +68,19 @@ final appStateManager = ref.watch(appStateProvider);
 
           return welcomeLoc;
         }
+
+        if (!loggedIn) {
+
+          if (noLoggedInRoutes.every((element) => !element) ) {
+            return welcomeLoc;
+          }
+        } else {
+
+          if (noLoggedInRoutes.any((element) => element)){
+            return dashboardLoc;
+          }
+        }
+
       }
 
       return null;
