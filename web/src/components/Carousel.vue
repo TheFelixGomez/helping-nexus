@@ -1,5 +1,5 @@
 <template>
-    <section class="flex items-center w-full h-screen bg-indigo-200 bg-center bg-cover text-purple snap-start">
+    <section id="partners" class="flex items-center w-full h-screen bg-indigo-200 bg-center bg-cover text-purple snap-start">
       <div class="w-1/12">&nbsp;</div>
       <div class="w-3/12 px-11">
         <div class="relative font-bold"><span

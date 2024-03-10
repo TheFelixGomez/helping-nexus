@@ -1,5 +1,5 @@
 <template>
-  <main class="">
+  <main class="scroll-smooth">
     <section class="flex items-center justify-center w-full bg-center bg-cover snap-start bg-home-1">
       <img alt="" title=""
            src="https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Fhelp1.webp?alt=media"
@@ -33,6 +33,9 @@
         </div>
       </div>
     </section>
+
+    <div id="taipy-analytics" class="w-full h-0.5"></div>
+    <embed src="https://helpingnexus.taipy.cloud/" class="mx-auto h-full" style="width:100%; height: 700px;">
   </main>
 </template>
 
