@@ -30,7 +30,6 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
   final TextEditingController _controllerUserLastName = TextEditingController();
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
-  final TextEditingController _controllerConfirmPassword = TextEditingController();
   final TextEditingController _controllerBirthday = TextEditingController();
   final TextEditingController _controllerExplication = TextEditingController();
 
@@ -77,7 +76,7 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
           },
         ),
         title: Text(
-          'Register Step:  ${step + 1} of X',
+          'Sign Up',
           style: GoogleFonts.nunito(
             textStyle: const TextStyle(
               fontSize: 20,
@@ -138,16 +137,24 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                       ),
                       CustomCardWrapper(
                         child: Text(
-                          step == 7
-                              ? 'Finish the registration process. \n\n '
-                              'Our team will review your answers and contact'
-                              ' you to validate the information. \n\n '
-                              ' Thank you for your trust in Helping Nexus'
-                              : 'Give us some information about yourself.',
-
+                          step == 6
+                              ? 'Thank you for your trust in HelpingNex.us'
+                              : step == 0
+                              ? 'My email is'
+                              : step == 1
+                              ? 'My name is'
+                              : step == 2
+                              ? 'My password is'
+                             : step == 3
+                              ? 'My date of birth is!'
+                              : step == 4
+                              ? 'We are almost done!'
+                              : step == 5
+                              ? 'Just a few more steps!'
+                              : 'Welcome to HelpingNex.us! \n\n ',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
-                              fontSize: 28,
+                              fontSize: 50,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -262,36 +269,6 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                                     }
                                     return null;
                                   },
-                                ),
-                              ),
-                              const SizedBox(height: 20.0),
-                              CustomCardWrapper(
-                                child: Column(
-                                  children: [
-                                    TextFormField(
-                                      controller: _controllerConfirmPassword,
-                                      obscureText: true,
-                                      decoration: const InputDecoration(
-                                        labelText: 'Confirm Password',
-                                        hintText: 'Confirm Password',
-                                        prefixIcon: Icon(Icons.password),
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10.0)),
-                                        ),
-                                      ),
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'The Password is required';
-                                        } else
-                                        if (value != _controllerPassword.text) {
-                                          return 'The Passwords do not match';
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                    ),
-                                  ],
                                 ),
                               ),
                             ],
@@ -415,7 +392,7 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                         ),
                         onPressed: () async {
                           if (_formValidator.currentState!.validate()) {
-                            if (step == 7) {
+                            if (step == 6) {
                               Response response = await _usersService.createUser(
                                   email: _controllerEmail.text,
                                   firstName: _controllerUserName.text,
@@ -439,7 +416,7 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                           }
                         },
                         child: Text(
-                            step == 7 ? 'Finish' : 'Continue',
+                            step == 6 ? 'Finish' : 'Continue',
                             style: GoogleFonts.nunito(
                                 textStyle: const TextStyle(
                                     color: Colors.white,

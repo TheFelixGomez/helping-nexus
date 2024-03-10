@@ -47,7 +47,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     child: Column(
                       children: [
                         Text(
-                          'Your friendly helper, always ready to lend a hand. 🚀 ',
+                          'Matchmaking for Good: Swipe Right for Volunteering!',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
                               fontSize: 28,
