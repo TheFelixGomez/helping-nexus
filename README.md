@@ -6,7 +6,7 @@ HelpingNex.us is a platform that connects volunteers with meaningful opportuniti
 ## Demo
 - web: [helpingnex.us](https://helpingnex.us/)
 - back: [api.helpingnex.us/docs](https://api.helpingnex.us/docs)
-- video (and app): [YouTube]()
+- video (and app): [https://www.youtube.com/watch?v=3pjlZpdj5Vo](https://www.youtube.com/watch?v=3pjlZpdj5Vo)
 
 ## Features
 
