@@ -19,6 +19,7 @@ class UserBase(BaseModel):
     location: Location
     wisher: bool = False
     company_name: str | None = None
+    description: str | None = None
 
 
 class UserIn(UserBase):

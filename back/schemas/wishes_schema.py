@@ -1,7 +1,6 @@
 from datetime import datetime
 from typing import Optional
 
-from fastapi import UploadFile
 from pydantic import BaseModel, Field
 
 from schemas.common import Location, get_time_now, PyObjectId
@@ -15,6 +14,7 @@ class WishBase(BaseModel):
     user_id: str
     title: str
     location: Location
+    description: str
 
 
 class WishIn(WishBase):
