@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:helping_nexus/api/users_service.dart';
 import 'package:helping_nexus/ui/components/custom_app_bar_back_button.dart';
 
 import '../../../helpers/validate_email.dart';
+import '../../../manager/app_state_manager.dart';
+import '../../../models/user.dart';
 import '../../components/custom_card_wrapper.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
+  final UsersService _usersService = UsersService();
   final GlobalKey<FormState> _formValidator = GlobalKey<FormState>();
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
@@ -107,8 +112,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           backgroundColor: Colors.indigo,
                           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         ),
-                        //TODO: Implement Service
-                        onPressed: () => print('login'),
+                        onPressed: () async {
+                          User? user = await _usersService.findUserByEmail(email: _controllerEmail.text);
+                          if (user != null) {
+                            ref.read(appStateProvider.notifier).login(
+                              user: user,
+                            );
+                          }
+                        },
                         child: Text('🔐  Login',
                             style: GoogleFonts.nunito(
                                 textStyle: const TextStyle(

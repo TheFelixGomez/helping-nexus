@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,6 +8,7 @@ import 'package:helping_nexus/api/extensions.dart';
 import 'package:helping_nexus/api/users_service.dart';
 import 'package:helping_nexus/manager/app_state_manager.dart';
 import 'package:helping_nexus/models/location.dart';
+import 'package:helping_nexus/models/user.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -405,7 +408,9 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                                   description: _controllerExplication.text
                               );
                               if (response.isSuccessful) {
-                                ref.read(appStateProvider.notifier).login();
+                                ref.read(appStateProvider.notifier).login(
+                                  user: User.fromJson(jsonDecode(response.body)),
+                                );
                               }
                             } else {
                               _incrementStep();

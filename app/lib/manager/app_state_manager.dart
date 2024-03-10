@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import '../models/user.dart';
+
 final appStateProvider = ChangeNotifierProvider<AppStateManager>((ref) => AppStateManager());
 
 class AppStateManager extends ChangeNotifier {
@@ -10,27 +12,21 @@ class AppStateManager extends ChangeNotifier {
   bool _initialized = false;
   bool _loggedIn = false;
   String? token;
+  User? user;
 
   bool get isInitialized => _initialized;
   bool get isLoggedIn => _loggedIn;
   String? get getToken => token;
+  User? get getUser => user;
 
   initializeApp() async {
-    token = await storage.read(key: 'token');
-
-    await Future.delayed(const Duration(milliseconds: 2000));
-
     _initialized = true;
-
-    if (token != null) {
-      await login();
-
-    } else {
-      notifyListeners();
-    }
+    notifyListeners();
   }
 
-  login() async {
+  login({required User user}) async {
+    this.user = user;
+
     _loggedIn = true;
 
     notifyListeners();

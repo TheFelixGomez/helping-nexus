@@ -105,4 +105,18 @@ class UsersService {
 
     return null;
   }
+
+  Future<User?> findUserByEmail({required String email}) async {
+    await init();
+    final response = await get(
+      Uri.parse('$_baseUrl/login?email=$email'),
+      headers: headers,
+    );
+
+    if (response.isSuccessful) {
+      return User.fromJson(jsonDecode(response.body));
+    }
+
+    return null;
+  }
 }

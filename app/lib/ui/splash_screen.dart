@@ -14,7 +14,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    ref.read(appStateProvider.notifier).initializeApp();
+
+    Future.delayed(const Duration(milliseconds: 500), () {
+      ref.read(appStateProvider.notifier).initializeApp();
+    });
   }
 
   @override
