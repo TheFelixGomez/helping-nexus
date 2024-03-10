@@ -21,6 +21,7 @@ dependencies:
   go_router: ^13.2.0
 
   # Can be replaced
+  image_picker: ^1.0.7
 
   # Google Icons
   font_awesome_flutter: ^10.1.0

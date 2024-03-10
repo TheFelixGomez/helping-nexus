@@ -62,10 +62,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      _box('I Want to Help!', Icons.travel_explore_outlined, Colors.green,
-                            () => {},
+                      _box(
+                        'I Want to Help!',
+                        Icons.travel_explore_outlined,
+                        Colors.green,
+                        () => context.pushNamed('registerVolunteer'),
                       ),
-                      _box('I Need Help!', Icons.sos_outlined, Colors.red, () => {}),
+                      _box(
+                          'I Need Help!',
+                          Icons.sos_outlined,
+                          Colors.red,
+                          () => context.pushNamed('registerCompany')
+                      ),
                     ],
                   ),
                   SizedBox(
