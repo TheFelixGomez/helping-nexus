@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:helping_nexus/manager/app_state_manager.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends ConsumerStatefulWidget{
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  SplashScreenState createState() => SplashScreenState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // TODO: initializeApp
+    ref.read(appStateProvider.notifier).initializeApp();
   }
 
   @override
@@ -22,15 +24,13 @@ class SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // TODO: Change for real image
-             // Padding(
-             //   padding: EdgeInsets.all(15.0),
-             //   child: Image(
-             //    height: 80,
-             //    image: AssetImage('assets/logos/launch_image.png'),
-             //   ),
-             // ),
-            Text('Splash'),
+             Padding(
+               padding: EdgeInsets.all(15.0),
+               child: Image(
+                height: 300,
+                image: AssetImage('assets/logos/HelpingNexus.png'),
+               ),
+             ),
           ],
         ),
       ),
