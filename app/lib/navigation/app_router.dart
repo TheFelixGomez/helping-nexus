@@ -5,6 +5,8 @@ import 'package:helping_nexus/ui/welcome_screen.dart';
 
 import '../manager/app_state_manager.dart';
 import '../ui/auth/login/login_screen.dart';
+import '../ui/auth/register/company/register_company_screen.dart';
+import '../ui/auth/register/volunteer/register_volunteer_screen.dart';
 import '../ui/dashboard_screen.dart';
 import '../ui/splash_screen.dart';
 
@@ -34,6 +36,16 @@ final appStateManager = ref.watch(appStateProvider);
           builder: (context, state) => const LoginScreen()
       ),
       GoRoute(
+          name: 'registerCompany',
+          path: '/register-company',
+          builder: (context, state) => const RegisterCompanyScreen()
+      ),
+      GoRoute(
+          name: 'registerVolunteer',
+          path: '/register-volunteer',
+          builder: (context, state) => const RegisterVolunteerScreen()
+      ),
+      GoRoute(
         name: 'dashboard',
         path: '/dashboard',
         pageBuilder: (context, state) => NoTransitionPage<void>(
@@ -50,6 +62,8 @@ final appStateManager = ref.watch(appStateProvider);
       const welcomeLoc = '/welcome';
 
       final inLogin = state.fullPath == '/login';
+      final inRegisterCompany = state.fullPath == '/register-company';
+      final inRegisterVolunteer = state.fullPath == '/register-volunteer';
 
       const dashboardLoc = '/dashboard';
 
@@ -58,7 +72,9 @@ final appStateManager = ref.watch(appStateProvider);
       final noLoggedInRoutes = [
         inSplash,
         inWelcome,
-        inLogin
+        inLogin,
+        inRegisterCompany,
+        inRegisterVolunteer
       ];
 
       // redirect to the welcome page if the user is not logged in or to the
