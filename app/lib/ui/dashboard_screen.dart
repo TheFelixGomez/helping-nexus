@@ -39,7 +39,7 @@ class _DashboardScreen extends ConsumerState<DashboardScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () => GoRouter.of(context).pushNamed('chats'),
+            onPressed: () => GoRouter.of(context).pushNamed('matches'),
             icon: const Icon(Icons.chat_bubble_outline, color: Colors.white),
           ),
         ],

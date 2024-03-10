@@ -58,11 +58,6 @@ final appStateManager = ref.watch(appStateProvider);
           builder: (context, state) => const RegisterVolunteerScreen()
       ),
       GoRoute(
-          name: 'chats',
-          path: '/chats',
-          builder: (context, state) => const ChatScreen()
-      ),
-      GoRoute(
         name: 'dashboard',
         path: '/dashboard',
         pageBuilder: (context, state) => NoTransitionPage<void>(

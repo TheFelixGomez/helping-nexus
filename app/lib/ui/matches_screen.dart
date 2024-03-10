@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:helping_nexus/api/matches_service.dart';
+import 'package:helping_nexus/ui/components/custom_app_bar_back_button.dart';
 
 final currentChatIdProvider = StateProvider<String?>((ref) => null);
 final currentChatNameProvider = StateProvider<String?>((ref) => null);
@@ -19,6 +20,7 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: customAppBarBackButton('Your Matches', context),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -72,7 +74,7 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
                   onTap: () {
                     ref.read(currentChatIdProvider.notifier).state = snapshot.data?[index]['_id'];
                     ref.read(currentChatNameProvider.notifier).state = snapshot.data?[index]['title'];
-                    context.goNamed('chat');
+                    context.pushNamed('chat');
                   },
                 ),
               );

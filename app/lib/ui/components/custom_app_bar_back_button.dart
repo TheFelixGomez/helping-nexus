@@ -5,18 +5,17 @@ import 'custom_back_button.dart';
 
 AppBar customAppBarBackButton(String title, context) {
   return AppBar(
+    centerTitle: true,
     leading: const CustomBackButton(),
-    title: Center(
-      child: Text(
-        title,
-        style: GoogleFonts.nunito(
-          textStyle: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-          ),
-        )
-      ),
+    title: Text(
+      title,
+      style: GoogleFonts.nunito(
+        textStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+        ),
+      )
     ),
     backgroundColor: Colors.black,
   );
