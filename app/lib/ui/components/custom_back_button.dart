@@ -24,7 +24,7 @@ class CustomBackButton extends StatelessWidget {
         },
         child: const FaIcon(
           FontAwesomeIcons.circleChevronLeft,
-          color: Colors.blueGrey,
+          color: Colors.indigo,
           size: 30.0,
         ),
       ),

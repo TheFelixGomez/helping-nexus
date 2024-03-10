@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'components/custom_app_bar.dart';
 import 'components/custom_card_wrapper.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -16,7 +15,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('', context),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -36,7 +34,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.88,
+              height: MediaQuery.of(context).size.height,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,59 +59,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20.0),
-                  CustomCardWrapper(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  elevation: 2,
-                                  backgroundColor: Colors.white60,
-                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                                ),
-                                onPressed: () => print('go To Register'),
-                                child: Text('🔍 I Want to Help!',
-                                    style: GoogleFonts.nunito(
-                                        textStyle: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold
-                                        )
-                                    )
-                                ),
-                            ),
-                          ),
-                          const SizedBox(height: 15.0),
-                          SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                elevation: 2,
-                                backgroundColor: Colors.white60,
-                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                              ),
-                              onPressed: () => print('go To Register'),
-                              child: Text('🆘 I Need Help!',
-                                  style: GoogleFonts.nunito(
-                                      textStyle: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold
-                                      )
-                                  )
-                              ),
-                            ),
-                          ),
-                        ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _box('I Want to Help!', Icons.travel_explore_outlined, Colors.green,
+                            () => {},
                       ),
-                    ),
+                      _box('I Need Help!', Icons.sos_outlined, Colors.red, () => {}),
+                    ],
                   ),
-                  const SizedBox(height: 20.0),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -122,7 +76,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         backgroundColor: Colors.indigo,
                         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       ),
-                      onPressed: () => print('go to login'),
+                      onPressed: () => context.pushNamed('login'),
                       child: Text('🔐  Login',
                         style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
@@ -137,6 +91,49 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ],
               ),
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  _box(String text, IconData icon, Color color, Function() onTap ) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 150,
+        width: 150,
+        margin: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+        ),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                size: 80,
+                color: color,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: Center(
+                  child: Text(
+                    text,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.nunitoSans(
+                      textStyle: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
