@@ -3,7 +3,10 @@
     <section class="flex items-center justify-center w-full bg-center bg-cover snap-start bg-home-1">
       <img alt="" title=""
            src="https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Fhelp1.webp?alt=media"
-           class="opacity-50 z-10">
+           class="opacity-50 z-10 relative">
+      <div class="absolute z-20 font-bold bg-[#b7a4fa] rounded-md font-serif lg:text-4xl lg:p-10">
+        <p>Matchmaking for Good: Swipe Right for Volunteering!</p>
+      </div>
     </section>
     <section class="flex items-center justify-center w-full h-screen snap-start">
       <div class="grid grid-flow-row grid-cols-12 grid-rows-1">
