@@ -19,7 +19,7 @@ class Wish {
 
   factory Wish.fromJson(Map<String, dynamic> json) {
     return Wish(
-      id: json['id'],
+      id: json['_id'],
       userId: json['user_id'],
       title: json['title'],
       location: Location.fromJson(json['location']),
