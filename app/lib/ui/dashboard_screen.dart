@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:helping_nexus/api/wishes_service.dart';
 import 'package:helping_nexus/ui/components/custom_card_wrapper.dart';
 
-import 'components/custom_app_bar.dart';
 import 'components/swipe_card.dart';
 
 
@@ -23,7 +24,27 @@ class _DashboardScreen extends ConsumerState<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('Dashboard', context),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'Dashboard',
+          textAlign: TextAlign.center,
+          style: GoogleFonts.nunito(
+            textStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () => GoRouter.of(context).pushNamed('chats'),
+            icon: const Icon(Icons.chat_bubble_outline, color: Colors.white),
+          ),
+        ],
+        backgroundColor: Colors.black,
+      ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -103,7 +124,6 @@ class _DashboardScreen extends ConsumerState<DashboardScreen> {
         if (snapshot.hasError) {
           return const Text('Error');
         }
-        print(snapshot.data);
 
         if (snapshot.data.isEmpty) {
           return const Text('No wishes found');
