@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:helping_nexus/api/wishes_service.dart';
 import 'package:helping_nexus/ui/components/custom_card_wrapper.dart';
 
 import 'components/custom_app_bar.dart';
@@ -15,10 +16,9 @@ class DashboardScreen extends ConsumerStatefulWidget {
 }
 
 class _DashboardScreen extends ConsumerState<DashboardScreen> {
+  final WishesService _wishesService = WishesService();
   final CardSwiperController _swipeController = CardSwiperController();
 
-  //TODO: Change for the real data
-  final cards = users.map(DashboardCard.new).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -35,28 +35,7 @@ class _DashboardScreen extends ConsumerState<DashboardScreen> {
         ),
         child: Column(
           children: [
-            Flexible(
-              child: CardSwiper(
-                controller: _swipeController,
-                cardsCount: cards.length,
-                onSwipe: _onSwipe,
-                onUndo: _onUndo,
-                // isLoop: false,
-                allowedSwipeDirection: const AllowedSwipeDirection.only(
-                  right: true,
-                  left: true,
-                ),
-                numberOfCardsDisplayed: 2,
-                backCardOffset: const Offset(-10, 0),
-                cardBuilder: (
-                    context,
-                    index,
-                    horizontalThresholdPercentage,
-                    verticalThresholdPercentage,
-                    ) =>
-                cards[index],
-              ),
-            ),
+            _buildSwiper(),
             Padding(
               padding: const EdgeInsets.only(bottom: 40.0),
               child: Row(
@@ -112,5 +91,49 @@ class _DashboardScreen extends ConsumerState<DashboardScreen> {
       'The card $currentIndex was undod from the ${direction.name}',
     );
     return true;
+  }
+  
+  _buildSwiper() {
+    return FutureBuilder(
+      future: _wishesService.getNewWishes(userId: '65ed8fd2fed34ccf99555e40'),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+        if (snapshot.hasError) {
+          return const Text('Error');
+        }
+        print(snapshot.data);
+
+        if (snapshot.data.isEmpty) {
+          return const Text('No wishes found');
+        }
+
+        final cards = snapshot.data.map(DashboardCard.new).toList();
+
+        return Flexible(
+          child: CardSwiper(
+            controller: _swipeController,
+            cardsCount: cards.length,
+            onSwipe: _onSwipe,
+            onUndo: _onUndo,
+            // isLoop: false,
+            allowedSwipeDirection: const AllowedSwipeDirection.only(
+              right: true,
+              left: true,
+            ),
+            numberOfCardsDisplayed: 2,
+            backCardOffset: const Offset(-10, 0),
+            cardBuilder: (
+                context,
+                index,
+                horizontalThresholdPercentage,
+                verticalThresholdPercentage,
+                ) =>
+            cards[index],
+          ),
+        );
+      }
+    );
   }
 }

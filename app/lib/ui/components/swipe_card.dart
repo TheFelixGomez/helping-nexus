@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:helping_nexus/models/wish.dart';
 
 import '../../models/user.dart';
 import '../../models/location.dart';
 
 class DashboardCard extends StatelessWidget {
-  final User informationCard;
+  final Wish informationCard;
 
   const DashboardCard(
       this.informationCard, {
@@ -52,7 +53,7 @@ class DashboardCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${informationCard.firstName} ${informationCard.lastName}',
+                  informationCard.title,
                   style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -61,7 +62,7 @@ class DashboardCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  informationCard.dob,
+                  informationCard.description,
                   style: const TextStyle(
                     color: Colors.grey,
                     fontSize: 15,
