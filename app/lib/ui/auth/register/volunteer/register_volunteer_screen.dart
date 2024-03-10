@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:helping_nexus/api/extensions.dart';
+import 'package:helping_nexus/api/users_service.dart';
+import 'package:helping_nexus/manager/app_state_manager.dart';
+import 'package:helping_nexus/models/location.dart';
+import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../helpers/validate_email.dart';
@@ -13,10 +18,13 @@ class RegisterVolunteerScreen extends ConsumerStatefulWidget {
   const RegisterVolunteerScreen({super.key});
 
   @override
-  ConsumerState<RegisterVolunteerScreen> createState() => _RegisterVolunteerScreen();
+  ConsumerState<RegisterVolunteerScreen> createState() =>
+      _RegisterVolunteerScreen();
 }
 
 class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
+  final UsersService _usersService = UsersService();
+
   final GlobalKey<FormState> _formValidator = GlobalKey<FormState>();
   final TextEditingController _controllerUserName = TextEditingController();
   final TextEditingController _controllerUserLastName = TextEditingController();
@@ -30,14 +38,18 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
   double _progressValue = 0.0;
 
   void _incrementStep() {
-    ref.read(stepProvider.notifier).state++;
+    ref
+        .read(stepProvider.notifier)
+        .state++;
     setState(() {
       _progressValue = _progressValue + 0.25;
     });
   }
 
   void _decrementStep() {
-    ref.read(stepProvider.notifier).state--;
+    ref
+        .read(stepProvider.notifier)
+        .state--;
     setState(() {
       _progressValue = _progressValue - 0.25;
     });
@@ -78,8 +90,14 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
         backgroundColor: Colors.black,
       ),
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        height: MediaQuery
+            .of(context)
+            .size
+            .height,
+        width: MediaQuery
+            .of(context)
+            .size
+            .width,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/backgrounds/screens_background_grey.png'),
@@ -96,7 +114,10 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.88,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height * 0.88,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -144,13 +165,16 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                           child: CustomCardWrapper(
                             child: TextFormField(
                               controller: _controllerEmail,
-                              onEditingComplete: () => FocusScope.of(context).nextFocus(),
+                              onEditingComplete: () =>
+                                  FocusScope.of(context).nextFocus(),
                               decoration: const InputDecoration(
                                 labelText: 'Email',
                                 hintText: 'Enter your email',
-                                prefixIcon: Icon(Icons.email, color: Colors.indigo),
+                                prefixIcon: Icon(
+                                    Icons.email, color: Colors.indigo),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10.0)),
                                 ),
                               ),
                               validator: (value) => validateEmail(value),
@@ -164,17 +188,20 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                               CustomCardWrapper(
                                 child: TextFormField(
                                   controller: _controllerUserName,
-                                  onEditingComplete: () => FocusScope.of(context).nextFocus(),
+                                  onEditingComplete: () =>
+                                      FocusScope.of(context).nextFocus(),
                                   decoration: const InputDecoration(
                                     labelText: 'First Name',
                                     hintText: 'Enter your First Name',
-                                    prefixIcon: Icon(Icons.emoji_people, color: Colors.green),
+                                    prefixIcon: Icon(Icons.emoji_people,
+                                        color: Colors.green),
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10.0)),
                                     ),
                                   ),
                                   validator: (value) {
-                                    if(value == null || value.isEmpty){
+                                    if (value == null || value.isEmpty) {
                                       return 'The Company Name is required';
                                     }
                                     return null;
@@ -187,17 +214,20 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                               CustomCardWrapper(
                                 child: TextFormField(
                                   controller: _controllerUserLastName,
-                                  onEditingComplete: () => FocusScope.of(context).nextFocus(),
+                                  onEditingComplete: () =>
+                                      FocusScope.of(context).nextFocus(),
                                   decoration: const InputDecoration(
                                     labelText: 'Last Name',
                                     hintText: 'Enter your Last Name',
-                                    prefixIcon: Icon(Icons.emoji_people, color: Colors.green),
+                                    prefixIcon: Icon(Icons.emoji_people,
+                                        color: Colors.green),
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10.0)),
                                     ),
                                   ),
                                   validator: (value) {
-                                    if(value == null || value.isEmpty){
+                                    if (value == null || value.isEmpty) {
                                       return 'The Company Name is required';
                                     }
                                     return null;
@@ -213,7 +243,8 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                             children: [
                               CustomCardWrapper(
                                 child: TextFormField(
-                                  onEditingComplete: () => FocusScope.of(context).nextFocus(),
+                                  onEditingComplete: () =>
+                                      FocusScope.of(context).nextFocus(),
                                   controller: _controllerPassword,
                                   obscureText: true,
                                   decoration: const InputDecoration(
@@ -221,11 +252,12 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                                     hintText: 'Enter your password',
                                     prefixIcon: Icon(Icons.password),
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10.0)),
                                     ),
                                   ),
                                   validator: (value) {
-                                    if(value == null || value.isEmpty){
+                                    if (value == null || value.isEmpty) {
                                       return 'The Password is required';
                                     }
                                     return null;
@@ -244,13 +276,15 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                                         hintText: 'Confirm Password',
                                         prefixIcon: Icon(Icons.password),
                                         border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10.0)),
                                         ),
                                       ),
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
                                           return 'The Password is required';
-                                        } else if (value != _controllerPassword.text) {
+                                        } else
+                                        if (value != _controllerPassword.text) {
                                           return 'The Passwords do not match';
                                         } else {
                                           return null;
@@ -270,8 +304,8 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                               controller: _controllerBirthday,
                               readOnly: true,
                               decoration: InputDecoration(
-                                labelText: 'Fecha de nacimiento',
-                                hintText: 'DD/MM/AAAA',
+                                labelText: 'Date of Birth',
+                                hintText: 'YYYY-MM-DD',
                                 prefixIcon: const Icon(Icons.calendar_today),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -285,7 +319,8 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                                   lastDate: DateTime.now(),
                                 );
                                 if (pickedDate != null) {
-                                  _controllerBirthday.text = pickedDate.toIso8601String().split('T')[0];
+                                  _controllerBirthday.text =
+                                  pickedDate.toIso8601String().split('T')[0];
                                 }
                               },
                             ),
@@ -297,7 +332,8 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                             child: TextFormField(
                                 controller: _controllerExplication,
                                 maxLines: 6,
-                                onEditingComplete: () => FocusScope.of(context).nextFocus(),
+                                onEditingComplete: () =>
+                                    FocusScope.of(context).nextFocus(),
                                 decoration: const InputDecoration(
                                   labelText: 'Why you want to be a volunteer?',
                                   hintText: 'Enter your explanation',
@@ -306,7 +342,8 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                                     color: Colors.red,
                                   ),
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10.0)),
                                   ),
                                 ),
                                 validator: (value) {
@@ -322,7 +359,8 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                           visible: step == 5,
                           child: GestureDetector(
                             onTap: () async {
-                              final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+                              final pickedFile = await ImagePicker().pickImage(
+                                  source: ImageSource.gallery);
                               if (pickedFile != null) {
                                 setState(() {
                                   _selectedImage = pickedFile;
@@ -331,7 +369,7 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                             },
                             // TODO: Implement Service
                             child: CustomCardWrapper(
-                              child:  Column(
+                              child: Column(
                                 children: [
                                   SizedBox(
                                     height: 300,
@@ -351,7 +389,8 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                                         SizedBox(height: 20.0),
                                         Image(
                                           width: double.infinity,
-                                          image: AssetImage('assets/upload_image.png'),
+                                          image: AssetImage(
+                                              'assets/upload_image.png'),
                                         ),
                                       ],
                                     ),
@@ -371,12 +410,26 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                         style: ElevatedButton.styleFrom(
                           elevation: 5,
                           backgroundColor: Colors.indigo,
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formValidator.currentState!.validate()) {
                             if (step == 7) {
-                              //TODO: Implement Service
+                              Response response = await _usersService.createUser(
+                                  email: _controllerEmail.text,
+                                  firstName: _controllerUserName.text,
+                                  lastName: _controllerUserLastName.text,
+                                  dob: _controllerBirthday.text,
+                                  location: Location(address: 'address',
+                                      city: 'city',
+                                      state: 'state',
+                                      zip: 'zip'),
+                                  description: _controllerExplication.text
+                              );
+                              if (response.isSuccessful) {
+                                ref.read(appStateProvider.notifier).login();
+                              }
                             } else {
                               _incrementStep();
                               setState(() {
@@ -386,7 +439,7 @@ class _RegisterVolunteerScreen extends ConsumerState<RegisterVolunteerScreen> {
                           }
                         },
                         child: Text(
-                            step == 7 ?  'Finish' : 'Continue',
+                            step == 7 ? 'Finish' : 'Continue',
                             style: GoogleFonts.nunito(
                                 textStyle: const TextStyle(
                                     color: Colors.white,

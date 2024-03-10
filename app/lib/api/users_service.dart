@@ -45,7 +45,7 @@ class UsersService {
     return null;
   }
 
-  Future createUser({
+  Future<Response> createUser({
     required String email,
     required String firstName,
     required String lastName,
