@@ -1,5 +1,9 @@
-from pydantic import BaseModel
+from typing import Annotated
+
+from pydantic import BaseModel, BeforeValidator
 from datetime import datetime, timezone
+
+PyObjectId = Annotated[str, BeforeValidator(str)]
 
 
 class Location(BaseModel):
