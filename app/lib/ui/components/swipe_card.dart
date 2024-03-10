@@ -35,10 +35,11 @@ class DashboardCard extends StatelessWidget {
           Flexible(
             child: Container(
               decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/backgrounds/screens_background_grey.png'),
-                  fit: BoxFit.cover,
-                ),
+                // TODO: uncomment this line when users have profile image
+                // image: DecorationImage(
+                //   image: AssetImage('assets/backgrounds/screens_background_grey.png'),
+                //   fit: BoxFit.cover,
+                // ),
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -139,5 +140,4 @@ final List<User> users = [
         country: 'Colombia',
       )
   ),
-
 ];
