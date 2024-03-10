@@ -27,6 +27,15 @@ HelpingNex.us is a platform that connects volunteers with meaningful opportuniti
 3. Install dependencies using package managers like pub, pip, and npm/yarn.
 4. Run the backend server, mobile app, and landing page locally for testing and development.
 
+## Our Team
+
+* **Felix Gomez** ([GitHub Profile URL](https://github.com/FelixDavid12))
+* **Julian Rique** ([GitHub Profile URL](https://github.com/julianrique))
+* **Sebastián Losada** ([GitHub Profile URL](https://github.com/Sebastian1808))
+
+* ![HelpingNex.us Team](https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Fteam.jpg?alt=media)
+
+
 ## Contributing
 
 Contributions are welcome! Feel free to fork this repository, make your changes, and submit a pull request. Please follow the contribution guidelines outlined in CONTRIBUTING.md.
