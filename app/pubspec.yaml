@@ -22,6 +22,7 @@ dependencies:
 
   # Can be replaced
   image_picker: ^1.0.7
+  flutter_card_swiper: ^7.0.0
 
   # Google Icons
   font_awesome_flutter: ^10.1.0
