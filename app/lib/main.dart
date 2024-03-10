@@ -20,6 +20,7 @@ class HelpingNexus extends ConsumerWidget {
       title: 'Helping Nexus',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
+        useMaterial3: true,
       ),
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,

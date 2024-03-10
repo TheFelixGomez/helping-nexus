@@ -8,6 +8,8 @@ import '../ui/auth/login/login_screen.dart';
 import '../ui/auth/register/company/register_company_screen.dart';
 import '../ui/auth/register/volunteer/register_volunteer_screen.dart';
 import '../ui/dashboard_screen.dart';
+import '../ui/chat_screen.dart';
+import '../ui/matches_screen.dart';
 import '../ui/splash_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -29,6 +31,16 @@ final appStateManager = ref.watch(appStateProvider);
           name: 'welcome',
           path: '/welcome',
           builder: (context, state) => const WelcomeScreen()
+      ),
+      GoRoute(
+          name: 'matches',
+          path: '/matches',
+          builder: (context, state) => const MatchesScreen()
+      ),
+      GoRoute(
+          name: 'chat',
+          path: '/chat',
+          builder: (context, state) => const ChatScreen()
       ),
       GoRoute(
           name: 'login',

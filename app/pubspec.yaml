@@ -26,6 +26,7 @@ dependencies:
 
   # Google Icons
   font_awesome_flutter: ^10.1.0
+  intl: ^0.19.0
 
 
 dev_dependencies:
