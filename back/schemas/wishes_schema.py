@@ -1,10 +1,10 @@
-from dataclasses import Field
 from datetime import datetime
+from typing import Optional
 
 from fastapi import UploadFile
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
-from schemas.common import Location, get_time_now
+from schemas.common import Location, get_time_now, PyObjectId
 
 
 class Volunteers(BaseModel):
@@ -12,7 +12,7 @@ class Volunteers(BaseModel):
 
 
 class WishBase(BaseModel):
-    _id: str
+    id: Optional[PyObjectId] = Field(alias="_id", default=None)
     created_at: datetime = Field(default_factory=get_time_now)
     user_id: str
     title: str
