@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    .snap {
+        scroll-snap-type: var(--scroll-snap-direction) var(--scroll-snap-constraint)
+    }
+
+    .snap-y {
+        --scroll-snap-direction: y;
+    }
+
+    .snap-mandatory {
+        --scroll-snap-constraint: mandatory;
+    }
+
+    .snap-start {
+        scroll-snap-align: start;
+    }
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
