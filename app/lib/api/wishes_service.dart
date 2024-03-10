@@ -44,7 +44,7 @@ class WishesService {
   Future getNewWishes({required String userId}) async {
     await init();
     final response = await get(
-      Uri.parse('$_baseUrl/new?userId=$userId'),
+      Uri.parse('$_baseUrl/new?user_id=$userId'),
       headers: headers,
     );
 
@@ -74,7 +74,7 @@ class WishesService {
     final response = await post(
       Uri.parse('$_baseUrl/propose-volunteer'),
       headers: headers,
-      body: jsonEncode({'wishId': wishId, 'userId': userId}),
+      body: jsonEncode({'wish_id': wishId, 'user_id': userId}),
     );
 
     return response;
@@ -86,7 +86,7 @@ class WishesService {
     final response = await post(
       Uri.parse('$_baseUrl/reject'),
       headers: headers,
-      body: jsonEncode({'wishId': wishId, 'userId': userId}),
+      body: jsonEncode({'wish_id': wishId, 'user_id': userId}),
     );
 
     return response;
@@ -98,7 +98,7 @@ class WishesService {
     final response = await post(
       Uri.parse('$_baseUrl/reject-volunteer'),
       headers: headers,
-      body: jsonEncode({'wishId': wishId, 'userId': userId}),
+      body: jsonEncode({'wish_id': wishId, 'user_id': userId}),
     );
 
     return response;

@@ -32,7 +32,7 @@ class MatchesService {
   Future<List<dynamic>> getMatches({required String userId}) async {
     await init();
     final response = await get(
-        Uri.parse('$_baseUrl?userId=$userId'),
+        Uri.parse('$_baseUrl?user_id=$userId'),
         headers: headers
     );
 
@@ -43,7 +43,7 @@ class MatchesService {
   Future<List<dynamic>> getVolunteers({required String wishId}) async {
     await init();
     final response = await get(
-        Uri.parse('$_baseUrl?wishId=$wishId'),
+        Uri.parse('$_baseUrl?wish_id=$wishId'),
         headers: headers
     );
 
