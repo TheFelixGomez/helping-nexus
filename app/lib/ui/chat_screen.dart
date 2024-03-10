@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:helping_nexus/api/messages_service.dart';
 import 'package:helping_nexus/models/message.dart';
+import 'package:helping_nexus/ui/components/custom_app_bar_back_button.dart';
+import 'package:helping_nexus/ui/components/custom_card_wrapper.dart';
 import 'package:helping_nexus/ui/matches_screen.dart';
 import 'package:intl/intl.dart';
 
@@ -40,18 +41,10 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final chatName = ref.watch(currentChatNameProvider);
+    final String chatName = ref.watch(currentChatNameProvider) ?? 'Chat';
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('$chatName'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            context.goNamed('matches');
-          },
-        ),
-      ),
+      appBar: customAppBarBackButton(chatName, context),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -65,8 +58,10 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Expanded(child: buildListMessage()),
+                CustomCardWrapper(
+                    child: Expanded(child: buildListMessage())),
                 buildMessageInput(),
               ],
             ),
@@ -77,43 +72,45 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
   }
 
   Widget buildMessageInput() {
-    return SizedBox(
-      width: double.infinity,
-      height: 50,
-      child: Row(
-        children: [
-          Flexible(
-              child: TextField(
-                focusNode: focusNode,
-                textInputAction: TextInputAction.send,
-                keyboardType: TextInputType.text,
-                textCapitalization: TextCapitalization.sentences,
-                controller: textEditingController,
-                decoration: const InputDecoration(
-                  hintText: 'Type a message',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  border: InputBorder.none,
+    return CustomCardWrapper(
+        child: SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: Row(
+            children: [
+              Flexible(
+                  child: TextField(
+                    focusNode: focusNode,
+                    textInputAction: TextInputAction.send,
+                    keyboardType: TextInputType.text,
+                    textCapitalization: TextCapitalization.sentences,
+                    controller: textEditingController,
+                    decoration: const InputDecoration(
+                      hintText: 'Type a message',
+                      hintStyle: TextStyle(color: Colors.grey),
+                      border: InputBorder.none,
+                    ),
+                    onSubmitted: (value) {
+                      onSendMessage(textEditingController.text, 0);
+                    },
+                  )),
+              Container(
+                margin: const EdgeInsets.only(left: 4),
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(30),
                 ),
-                onSubmitted: (value) {
-                  onSendMessage(textEditingController.text, 0);
-                },
-              )),
-          Container(
-            margin: const EdgeInsets.only(left: 4),
-            decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: IconButton(
-              onPressed: () {
-                onSendMessage(textEditingController.text, 0);
-              },
-              icon: const Icon(Icons.send_rounded),
-              color: Colors.white,
-            ),
+                child: IconButton(
+                  onPressed: () {
+                    onSendMessage(textEditingController.text, 0);
+                  },
+                  icon: const Icon(Icons.send_rounded),
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        )
     );
   }
 
