@@ -1,3 +1,5 @@
+![adada-removebg-preview](https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Flogo-white.png?alt=media)
+
 # HelpingNex.us
 
 HelpingNex.us is a platform that connects volunteers with meaningful opportunities worldwide. It leverages modern technologies like Flutter, FastAPI, Vue.js, and MongoDB to provide a seamless experience for users.
@@ -5,7 +7,7 @@ HelpingNex.us is a platform that connects volunteers with meaningful opportuniti
 ## Demo
 - web: [helpingnex.us](https://helpingnex.us/)
 - back: [api.helpingnex.us/docs](https://api.helpingnex.us/docs)
-- video (and app): [YouTube]()
+- video (and app): [https://www.youtube.com/watch?v=3pjlZpdj5Vo](https://www.youtube.com/watch?v=3pjlZpdj5Vo)
 
 ## Features
 
@@ -25,6 +27,15 @@ HelpingNex.us is a platform that connects volunteers with meaningful opportuniti
 2. Set up the development environment for Flutter, FastAPI, and Vue.js + Taipy by going to each one of the subfolder.
 3. Install dependencies using package managers like pub, pip, and npm/yarn.
 4. Run the backend server, mobile app, and landing page locally for testing and development.
+
+## Our Team
+
+* **Felix Gomez** ([@FelixDavid12](https://github.com/FelixDavid12))
+* **Julian Rique** ([@julianrique](https://github.com/julianrique))
+* **Sebastián Losada** ([@Sebastian1808](https://github.com/Sebastian1808))
+
+![HelpingNex.us Team](https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Fteam.jpg?alt=media)
+
 
 ## Contributing
 
