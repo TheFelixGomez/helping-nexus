@@ -3,7 +3,7 @@
     <header>
       <div class="container mx-auto flex items-center justify-between">
         <div class="flex items-center">
-          <img src="../assets/logo_header.png" alt="Logo X" class="h-44">
+          <img src="https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Flogo_header.png?alt=media" alt="HelpingNexus Logo" class="h-44">
         </div>
         <a href="https://felixgomez.com" class="font-bold">Support</a>
         <a href="https://julianrique.com" class="font-bold">Analytics</a>

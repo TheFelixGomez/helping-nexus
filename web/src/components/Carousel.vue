@@ -1,7 +1,7 @@
 <template>
   <main  class="max-h-screen overflow-y-scroll snap snap-y snap-mandatory">
     <section class="flex items-center justify-center w-full h-screen bg-center bg-cover snap-start bg-home-1">
-      <img alt="" title="" src="../assets/help1.jpg" class="opacity-50 z-10">
+      <img alt="" title="" src="https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Fhelp1.webp?alt=media" class="opacity-50 z-10">
     </section>
     <section class="flex items-center justify-center w-full h-screen snap-start">
       <div class="grid grid-flow-row grid-cols-12 grid-rows-1">
@@ -10,7 +10,7 @@
           <h3 class="text-pink">Try to match with th e help you want to make!</h3>
         </div>
         <div class="flex flex-col items-end col-span-6 col-start-3 row-start-1 z-0">
-          <img src="../assets/help4.jpg"  class="animate-jump opacity-40" alt=""/>
+          <img src="https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Fhelp4.webp?alt=media"  class="animate-jump opacity-40" alt=""/>
           <a href="/about" class="mt-2 text-xs underline">Find out more &rarr;</a>
         </div>
       </div>
@@ -18,7 +18,7 @@
     <section class="flex items-center justify-center w-full h-screen text-white bg-purple snap-start">
       <div class="grid grid-flow-row grid-cols-12 grid-rows-1 gap-8">
         <div class="col-span-5 col-start-2">
-          <img src="../assets/help3.jpg" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Fhelp3.webp?alt=media" alt="help 3 image" />
         </div>
         <div class="flex flex-col justify-center col-span-3 col-start-8 z-10 text-black">
           <h2>We're a non-profit app</h2>
@@ -27,7 +27,7 @@
         </div>
       </div>
     </section>
-    <section class="flex items-center w-full h-screen bg-indigo-200 bg-center bg-cover text-purple snap-start" style="background-image: url(https://thetodoist.com/img/blog/beach-workouts/running.jpg)">
+    <section class="flex items-center w-full h-screen bg-indigo-200 bg-center bg-cover text-purple snap-start">
       <div class="w-1/12">&nbsp;</div>
       <div class="w-3/12 px-11">
         <div class="relative font-bold"><span class="absolute flex w-full h-0.5 -ml-4 bg-purple -left-full top-1/2 "></span>About us</div>
