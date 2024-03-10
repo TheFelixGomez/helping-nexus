@@ -43,10 +43,3 @@ Contributions are welcome! Feel free to fork this repository, make your changes,
 ## License
 
 This project is licensed under the [Apache License 2.0](https://github.com/FelixDavid12/helping-nexus/blob/main/LICENSE).
-
-<style>
-  .img-responsive {
-    max-width: 100%;
-    height: auto;
-  }
-</style>
