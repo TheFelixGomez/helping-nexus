@@ -33,7 +33,7 @@ HelpingNex.us is a platform that connects volunteers with meaningful opportuniti
 * **Julian Rique** ([@julianrique](https://github.com/julianrique))
 * **Sebastián Losada** ([@Sebastian1808](https://github.com/Sebastian1808))
 
-* ![HelpingNex.us Team](https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Fteam.jpg?alt=media)
+![HelpingNex.us Team](https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Fteam.jpg?alt=media)
 
 
 ## Contributing
@@ -43,3 +43,10 @@ Contributions are welcome! Feel free to fork this repository, make your changes,
 ## License
 
 This project is licensed under the [Apache License 2.0](https://github.com/FelixDavid12/helping-nexus/blob/main/LICENSE).
+
+<style>
+  .img-responsive {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
