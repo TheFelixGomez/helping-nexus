@@ -27,4 +27,15 @@ class Wish {
       createdAt: DateTime.parse(json['created_at']),
     );
   }
+
+  toJson() {
+    return {
+      'id': id,
+      'user_id': userId,
+      'title': title,
+      'location': location.toJson(),
+      'description': description,
+      'created_at': createdAt.toIso8601String(),
+    };
+  }
 }
