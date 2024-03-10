@@ -70,6 +70,7 @@ class UsersService {
         'wisher': wisher,
         'company_name': companyName,
         'description': description,
+        'auth_id': 'auth0|60e3e3e3e3e3e3e3e3e3e3e3',
       }),
     );
 
