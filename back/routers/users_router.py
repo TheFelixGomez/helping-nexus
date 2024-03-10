@@ -35,6 +35,17 @@ async def create_user(user: users_schema.UserIn):
     return users_schema.UserOut(**user_created)
 
 
+@router.get("/login", response_model=users_schema.UserOut)
+async def fake_login_user(email: str):
+    # find if the user exists
+    user = await users_collection.find_one({"email": email})
+
+    if not user:
+        raise HTTPException(status_code=422, detail="User not found")
+
+    return users_schema.UserOut(**user)
+
+
 @router.get("/{user_id}", response_model=users_schema.UserOut)
 async def get_user(user_id: str):
     # find if the user exists
