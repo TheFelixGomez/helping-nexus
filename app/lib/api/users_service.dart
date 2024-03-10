@@ -6,7 +6,7 @@ import 'package:http/http.dart' show get, post, Response;
 import '../models/location.dart';
 import '../models/user.dart';
 
-class FairFigureServices {
+class UsersService {
   final String _baseUrl =
       'https://api.helpingnex.us/users'; // dotenv.env['API_URL'] ?? '';
   String? _authToken;
