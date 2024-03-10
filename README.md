@@ -1,4 +1,5 @@
-![adada-removebg-preview](https://github.com/FelixDavid12/helping-nexus/assets/34462714/c1fca406-de58-47e4-98f6-6d2ea1e3044e)
+![adada-removebg-preview](https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Flogo-white.png?alt=media)
+
 # HelpingNex.us
 
 HelpingNex.us is a platform that connects volunteers with meaningful opportunities worldwide. It leverages modern technologies like Flutter, FastAPI, Vue.js, and MongoDB to provide a seamless experience for users.
