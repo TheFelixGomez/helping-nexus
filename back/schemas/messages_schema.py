@@ -7,6 +7,7 @@ from schemas.common import get_time_now, PyObjectId
 
 
 class MessageBase(BaseModel):
+    wish_id: str
     from_user_id: str
     to_user_id: str
     message: str

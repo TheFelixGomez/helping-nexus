@@ -28,15 +28,16 @@ async def send_message(message: messages_schema.MessageIn):
     return messages_schema.MessageOut(**msg_created)
 
 
-@router.get("/{user_id}", response_model=list[messages_schema.MessageOut])
-async def get_messages(user_id: str):
+@router.get("/", response_model=list[messages_schema.MessageOut])
+async def get_messages(user_id: str, wish_id: str):
     # find all messages from the user or to the user sorted by date
     messages = await messages_collection.find(
         {
             "$or": [
                 {"from_user_id": user_id},
                 {"to_user_id": user_id}
-            ]
+            ],
+            "wish_id": wish_id
         }
     ).sort("created_at", -1).to_list(100)
 
