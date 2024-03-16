@@ -30,7 +30,7 @@ HelpingNex.us is a platform that connects volunteers with meaningful opportuniti
 
 ## Our Team
 
-* **Felix Gomez** ([@FelixDavid12](https://github.com/FelixDavid12))
+* **Felix Gomez** ([@TheFelixGomez](https://github.com/thefelixgomez))
 * **Julian Rique** ([@julianrique](https://github.com/julianrique))
 * **Sebastián Losada** ([@Sebastian1808](https://github.com/Sebastian1808))
 
