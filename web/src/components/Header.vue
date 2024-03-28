@@ -9,17 +9,18 @@
     <button class="font-bold" @click="scrollTo('partners')">
       Partners
     </button>
-    <button class="font-bold" @click="scrollTo('taipy-analytics')">
-      Analytics
+    <button class="font-bold" @click="scrollTo('wip')">
+      WIP
     </button>
-    <button class="bg-[#7e5bf6] hover:bg-[#b7a4fa] text-white font-bold py-2 px-4 rounded-md">
-      Try Now!
-    </button>
+    <a href="https://github.com/TheFelixGomez/helping-nexus" target="_blank"
+       rel="nofollow noopener noreferrer"
+       class="bg-[#7e5bf6] hover:bg-[#b7a4fa] text-white font-bold py-2 px-4 rounded-2xl">
+      Help Now
+    </a>
   </header>
 </template>
 
 <script setup>
-
 const scrollTo = (elementId) => {
   const element = document.getElementById(elementId);
   element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });

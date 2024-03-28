@@ -1,35 +1,32 @@
 <template>
-    <section id="partners" class="flex items-center w-full h-screen bg-indigo-200 bg-center bg-cover text-purple snap-start">
-      <div class="w-1/12">&nbsp;</div>
-      <div class="w-3/12 px-11">
-        <div class="relative font-bold"><span
-            class="absolute flex w-full h-0.5 -ml-4 bg-purple -left-full top-1/2 "></span>About us
-        </div>
-        <a href="#">
-          <h2>Like the offers that match your preferences</h2>
-          <p>The biggest, best-known and most prestigious NGOs are here to match with you.</p>
-        </a>
-        <a href="#" class="mt-2 text-xs underline">Read more &rarr;</a>
-      </div>
-      <div
-          class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-        <ul class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
-          <template v-for="logo in logos">
-            <li>
-              <img :src="logo.src" :alt="logo.alt"/>
-            </li>
-          </template>
-        </ul>
-        <ul class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
-            aria-hidden="true">
-          <template v-for="logo in logos">
-            <li>
-              <img :src="logo.src" :alt="logo.alt"/>
-            </li>
-          </template>
-        </ul>
-      </div>
-    </section>
+  <section id="partners" class="px-32 flex flex-col items-center justify-center gap-32 w-full h-screen bg-indigo-200">
+    <h2 class="text-6xl font-bold text-center">
+      Our Partners<br>
+      <span class="text-base italic text-center">*desired partners</span>
+    </h2>
+    <p class="text-xl w-1/2 text-center">
+      Like the offers that match your preferences
+      The biggest, best-known and most prestigious NGOs are here to match with you.
+    </p>
+    <div
+        class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+      <ul class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
+        <template v-for="logo in logos">
+          <li>
+            <img :src="logo.src" :alt="logo.alt"/>
+          </li>
+        </template>
+      </ul>
+      <ul class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
+          aria-hidden="true">
+        <template v-for="logo in logos">
+          <li>
+            <img :src="logo.src" :alt="logo.alt"/>
+          </li>
+        </template>
+      </ul>
+    </div>
+  </section>
 </template>
 
 <script setup>
