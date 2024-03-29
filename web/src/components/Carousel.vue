@@ -1,15 +1,15 @@
 <template>
-  <section id="partners" class="px-32 flex flex-col items-center justify-center gap-32 w-full h-screen bg-indigo-200">
+  <section id="partners" class="px-4 lg:px-32 flex flex-col items-center justify-center gap-32 w-full h-screen bg-indigo-200">
     <h2 class="text-6xl font-bold text-center">
       Our Partners<br>
       <span class="text-base italic text-center">*desired partners</span>
     </h2>
-    <p class="text-xl w-1/2 text-center">
+    <p class="text-xl w-full lg:w-1/2 text-center">
       Like the offers that match your preferences
       The biggest, best-known and most prestigious NGOs are here to match with you.
     </p>
     <div
-        class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+        class="w-full lg:w-3/4 inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
       <ul class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
         <template v-for="logo in logos">
           <li>

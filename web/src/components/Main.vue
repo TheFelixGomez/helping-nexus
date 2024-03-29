@@ -1,19 +1,24 @@
 <template>
   <main>
-    <div class="flex items-center justify-center w-full">
+    <div class="flex items-center justify-center w-full h-screen relative">
       <img alt="People helping image"
            src="https://firebasestorage.googleapis.com/v0/b/helping-nexus.appspot.com/o/assets%2Fhelp1.webp?alt=media"
-           class="opacity-50 z-10 relative">
-      <div class="absolute z-20 font-bold bg-[#b7a4fa] rounded-md font-serif lg:text-4xl lg:p-10">
-        <h1>Matchmaking for Good: Swipe Right for Volunteering!</h1>
+           class="opacity-50 h-full w-full object-cover">
+      <div class="absolute bg-[#b7a4fa] rounded-2xl px-4 py-8 lg:p-10 mx-4 w-auto lg:w-3/4 lg:mx-auto">
+        <h1 class="text-5xl lg:text-6xl font-bold text-center">
+          Matchmaking for Good:<br class="block lg:hidden">
+          <span class="text-3xl lg:text-6xl">
+            Swipe Right for Volunteering!
+          </span>
+        </h1>
       </div>
     </div>
 
-    <section id="wip" class="px-32 flex flex-col items-center justify-center gap-32 w-full h-screen">
-      <h2 class="text-6xl font-bold">
+    <section id="wip" class="px-4 lg:px-32 flex flex-col items-center justify-center gap-32 w-full h-screen">
+      <h2 class="text-6xl font-bold text-center">
         Work In Progress
       </h2>
-      <p class="text-xl w-1/2 text-center">
+      <p class="text-xl w-full lg:w-1/2 text-center">
         Our goal is to create a platform that connects volunteers with NGOs.<br><br>
         We are looking for contributors to help us with the development of the platform.
         If you are interested in helping, please visit our GitHub repository.
